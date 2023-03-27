@@ -1,0 +1,38 @@
+{% extends 'adminnavbar.html' %}
+
+{% block content %}
+
+{% for a in modifyprofile %}
+<div class="eventMasterSlot" id="eventMasterSlotId">
+    <div class="editFormMasterSlots">
+        <h3>Edit event</h3>
+        <form action="{% url 'updateprofile' a.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <span class="eventImgFileFlex">
+                <span class="eventLableIpFlex">
+                    <label>Customer First Name</label>
+                    <input type="text" name="reeventname" value="{{a.customer_first_name}}">
+                </span>
+                <span class="eventLableIpFlex">
+                    <label>Customer Last Name</label>
+                    <input type="text" name="reeventdesc" value="{{a.customer_last_name}}">
+                </span>
+            </span>
+            <span class="eventLableIpFlex">
+                    <label>Customer Email</label>
+                    <input type="email" name="reeventmessageheader" value="{{a.customer_email}}">
+                </span>
+            <span class="eventLableIpFlex">
+                    <label>Customer Number</label>
+                    <input type="number" name="reeventbody" value="{{a.customer_phone_number}}">
+                </span>
+            <span class="eventLableIpFlex">
+                    <label>Customer Address</label>
+                    <input type="text" name="reeventfooter" value="{{a.customer_address}}">
+                </span>
+             <input type="submit" value="Update" />
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

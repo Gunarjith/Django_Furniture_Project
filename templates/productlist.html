@@ -1,0 +1,59 @@
+{% extends 'adminnavbar.html' %}
+
+{% block content %}
+<div class="">
+    <div class="eventFlexBtn">
+        <h3>List of Furniture Products</h3>
+        <button class="eventmasterAddbtn">
+            <a href="{% url 'addproduct' %}" class=addevents>Add Furniture Products</a>
+        </button>
+    </div>
+
+    <div class="eventmaster">
+
+        <!-- <div class="eventSearch">
+            <form action="">
+                <input type="text" placeholder="Search.." name="search" id="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div> -->
+
+
+        <table>
+            <thead>
+                <tr>
+
+                    <th>Product Name&nbsp;&nbsp;</th>
+                    <th>Product Description&nbsp;&nbsp;</th>
+                    <th>Product Price&nbsp;&nbsp;</th>
+                    <th>Product Id&nbsp;&nbsp;</th>
+                     <th>Product Unit&nbsp;&nbsp;</th>
+                    <th>Product Image&nbsp;&nbsp;</th>
+                    <th style="text-align: center;">Edit / Delete</th>
+
+                </tr>
+            </thead>
+            <tbody id="mytable" >
+                {% for a in product_info_list %}
+                <tr style="margin: 50px;">
+
+                    <td style="text-align: left;">{{a.product_name}}</td>
+                    <td style="text-align: left;">{{a.product_description}}</td>
+                    <td style="text-align: left;">{{a.product_price}}</td>
+                    <td style="text-align: left;">{{a.product_id}}</td>
+                    <td style="text-align: left;">{{a.product_unit}}</td>
+                    <td><img src="https://s3.us-east-2.amazonaws.com/vailo.ai-bucket/{{a.product_image}}" width="300" height="200"></td>
+                    <td>
+                        <span class="slotEditBtn">
+                            <a href="{% url 'editproduct' a.id %}"><button class="eventMasterEditBtn"><i
+                                        class="fa fa-edit"></i></button> </a>
+                            <a href="{% url 'deleteproduct' a.id %}"><button class="eventMasterDeletBtn"><i
+                                        class="fa fa-trash"></i></button></a>
+                        </span>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

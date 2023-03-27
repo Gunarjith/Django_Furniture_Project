@@ -1,0 +1,52 @@
+{% extends 'adminnavbar.html' %}
+
+{% block content %}
+
+{% for a in editproduct %}
+<div class="eventMasterSlot" id="eventMasterSlotId">
+    <div class="editFormMasterSlots">
+        <h3>Edit event</h3>
+        <form action="{% url 'updateproduct' a.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <span class="eventImgFileFlex">
+                <span class="eventLableIpFlex">
+                    <label>Product Name</label>
+                    <input type="text" name="reproductname" value="{{a.product_name}}">
+                </span>
+                <span class="eventLableIpFlex">
+                    <label>Product Description</label>
+                    <input type="text" name="reproductdesc" value="{{a.product_description}}">
+                </span>
+            </span>
+            <span class="eventLableIpFlex">
+                    <label>Product Price</label>
+                    <input type="number" name="reprice" value="{{a.product_price}}">
+                </span>
+            <span class="eventLableIpFlex">
+                    <label>Product ID</label>
+                    <input type="number" name="reID" value="{{a.product_id}}">
+                </span>
+            <span class="eventLableIpFlex">
+                    <label>Product Unit</label>
+                    <input type="number" name="reunit" value="{{a.product_unit}}">
+                </span>
+          <span class="eventImgFileFlexGridImg">
+                <label>ProductImage</label>
+                <input type="file" name="reProductImage"
+                onchange="document.getElementById('output2').src=window.URL.createObjectURL(this.files[0])">
+
+                <img class="eventImgFileGridTicketImg" src="https://s3.us-east-2.amazonaws.com/vailo.ai-bucket/{{a.product_image}}">
+                <img class="eventImgFileGridTicketImg" src="" id="output2">
+          </span>
+          <span class="eventLableIpFlex">
+                    <label>Product Status</label>
+                    <input type="number" name="restatus" value="{{a.product_status}}">
+                </span>
+
+             <input type="submit" value="Update" />
+
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

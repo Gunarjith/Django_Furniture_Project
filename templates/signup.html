@@ -1,0 +1,59 @@
+{% extends 'adminnavbar.html' %}
+
+{% block content %}
+
+<div class="regSection">
+
+    <div class="regRightVailo">
+
+        <h2>Register page</h2>
+
+
+    </div>
+    {% load crispy_forms_tags %}
+    <form method="post" class="requires-validation" novalidate style="width: -webkit-fill-available; margin: 20px 5px;">
+        {% csrf_token %}
+        <div class="regGlassVailo">
+            <div class="regLeftVailo">
+                <div class="regLeft">
+
+                    <div class="regMail">
+                        <label for="Username">Name</label>
+                        {{form.username}}
+                    </div>
+
+
+                    <div class="regMail">
+                        <label for="Email">Email</label>
+                        {{form.email}}
+                    </div>
+
+                    <div class="regPasss">
+                        <label for="Password">Password</label>
+                        {{form.password1}}
+                    </div>
+
+                    <div class="regPasss">
+                        <label for="password">Re-Enter Password</label>
+                        {{form.password2}}
+                        <i class="far fa-eye-slash" id="togglePassword"
+                            style="margin: 20px 0px 0 -40px;cursor: pointer;position: absolute;"></i>
+                    </div>
+
+
+                    <button class="submitReg">Register here</button>
+
+                    <div class="loginContactUs">
+                        <p>Already have an account? <a href="{% url 'login' %}" style="color: green;">Login</a></p>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'adminnavbar.html' %}
+
+{% block content %}
+
+<h3>Add Customer Profile</h3>
+<div class="AddEventFormMaster">
+
+    <form action="{% url 'submitinfo' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- <span class="eventImgFileFlex"> -->
+        <span class="eventLableIpFlex">
+
+            <label>Customer Fisrst Name</label>
+            <input type="text" name="CustomerFName" placeholder="Enter Customer first name" required><br><br>
+        </span>
+
+        <span class="eventLableIpFlex">
+            <label>Customer Last Name</label>
+            <input type="text" name="CustomerLName" placeholder="Enter Customer last name" required><br><br>
+        </span>
+
+        <span class="eventLableIpFlex">
+
+            <label>Customer Email</label>
+            <input type="email" name="cemail" placeholder="Enter customer email" required><br><br>
+        </span>
+
+      <span class="eventLableIpFlex">
+
+            <label>Customer Phone Number</label>
+            <input type="number" name="cnumber" placeholder="Enter customer number" required><br><br>
+        </span>
+
+      <span class="eventLableIpFlex">
+
+            <label>Customer Address</label>
+            <input type="text" name="cadress" placeholder="Enter customer address" required><br><br>
+        </span>
+
+        <input class="addeventSubmit" type="submit" value="Submit">
+
+    </form>
+</div>
+{% endblock %}
